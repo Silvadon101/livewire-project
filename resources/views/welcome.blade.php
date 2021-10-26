@@ -8,6 +8,13 @@
 </head>
 <body>
     
+    {{-- Another way to include 'livewire' components
+        ============================================== --}}
+    
+        {{-- @livewire('post') --}}
+    
+    <livewire:post />
+
     @livewireScripts
 </body>
 </html>
