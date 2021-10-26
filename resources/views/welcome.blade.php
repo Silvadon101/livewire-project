@@ -15,6 +15,8 @@
     
     <livewire:post />
 
+    <livewire:calculator />
+
     @livewireScripts
 </body>
 </html>
