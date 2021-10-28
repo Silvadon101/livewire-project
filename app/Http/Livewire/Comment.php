@@ -20,6 +20,11 @@ class Comment extends Component
 
     public function addComment()
     {
+        // ?------returns nothing if comment box is empty---------
+        if($this->newComment == ""){
+           return;
+       }
+
         array_unshift($this->comment,[
             'body' => $this->newComment,
             'created_at' => Carbon::now()->diffForHumans(),

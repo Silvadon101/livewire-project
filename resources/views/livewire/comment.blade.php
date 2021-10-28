@@ -3,12 +3,12 @@
     <div class="flex justify-center">
         <div class="w-6/12">
             <h1 class="my-10 text-3xl">Comments</h1>
-            <div class="my-4 flex">
-                <input type="text" class="w-full focus:outline-none focus:ring focus:border-blue-300 rounded border shadow p-2 mr-2 my-2" placeholder="What's on your mind?" wire:model.lazy="newComment">
+            <form class="my-4 flex" wire:submit.prevent="addComment">
+                <input type="text" class="w-full focus:outline-none focus:ring focus:border-blue-300 rounded border shadow p-2 mr-2 my-2" placeholder="What's on your mind?" wire:model.lazy="newComment" wire:keydown.enter="addComment">
                 <div class="py-2">
-                    <button class="p-2 bg-blue-500 w-20 rounded shadow text-white hover:bg-blue-600" wire:click="addComment">Add</button>
+                    <button class="p-2 bg-blue-500 w-20 rounded shadow text-white hover:bg-blue-600" type="submit">Add</button>
                 </div>
-            </div>
+            </form>
             @foreach($comment as $comments)
             <div class="rounded border shadow p-3 my-2">
                 <div class="flex justify-start my-2">
