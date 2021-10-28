@@ -3,8 +3,9 @@
     <div class="flex justify-center">
         <div class="w-6/12">
             <h1 class="my-10 text-3xl">Comments</h1>
+            {{-- -----you can also press down on 'enter' key to add comment due to the '<form></form>'----- --}}
             <form class="my-4 flex" wire:submit.prevent="addComment">
-                <input type="text" class="w-full focus:outline-none focus:ring focus:border-blue-300 rounded border shadow p-2 mr-2 my-2" placeholder="What's on your mind?" wire:model.lazy="newComment" wire:keydown.enter="addComment">
+                <input type="text" class="w-full focus:outline-none focus:ring focus:border-blue-300 rounded border shadow p-2 mr-2 my-2" placeholder="What's on your mind?" wire:model.lazy="newComment">
                 <div class="py-2">
                     <button class="p-2 bg-blue-500 w-20 rounded shadow text-white hover:bg-blue-600" type="submit">Add</button>
                 </div>
