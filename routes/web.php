@@ -19,6 +19,6 @@ Route::get('/', function () {
 });
 
 Route::get('home', function() {
-    $comments = Comments::all();
-    return view('comment_view',compact('comments'));
+    // $comments = Comments::all();
+    return view('comment_view');
 });

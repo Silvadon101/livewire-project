@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 use Carbon\Carbon;
+use App\Models\Comments;
 
 class Comment extends Component
 {
@@ -13,9 +14,10 @@ class Comment extends Component
     public $newComment;
 
 
-    public function mount($com)
+    public function mount()
     {
         // -----adds user comment in property(variable)----
+        $com = Comments::all();
         $this->comment = $com;
     }    
 
