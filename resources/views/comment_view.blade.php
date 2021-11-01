@@ -11,7 +11,7 @@
 <body>
 
 
-	<livewire:comment />
+	<livewire:comment :com="$comments" />
 
 	@livewireScripts
 </body>

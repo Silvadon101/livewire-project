@@ -13,10 +13,10 @@
             @foreach($comment as $comments)
             <div class="rounded border shadow p-3 my-2">
                 <div class="flex justify-start my-2">
-                    <p class="font-bold text-lg">{{ $comments['user'] }} </p>
-                    <p class="mx-3 py-1 text-xs text-gray-400 font-semibold">{{ $comments['created_at'] }}</p>
+                    <p class="font-bold text-lg">{{ $comments->user->name }} </p>
+                    <p class="mx-3 py-1 text-xs text-gray-400 font-semibold">{{ $comments->created_at->diffForHumans() }}</p>
                 </div>
-                <p class="text-gray-800">{{ $comments['body'] }}</p>
+                <p class="text-gray-800">{{ $comments->body }}</p>
             </div>
             @endforeach
         </div>

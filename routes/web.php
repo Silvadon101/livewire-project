@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Models\Comments;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,4 +18,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::view('home','comment_view');
+Route::get('home', function() {
+    $comments = Comments::all();
+    return view('comment_view',compact('comments'));
+});
