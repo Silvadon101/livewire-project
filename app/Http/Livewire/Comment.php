@@ -13,29 +13,67 @@ class Comment extends Component
 
     public $newComment;
 
+    protected $rules = [
+        'newComment' => 'required|max:455'
+    ];
+
 
     public function mount()
     {
         // -----adds user comment in property(variable)----
-        $com = Comments::all();
+        $com = Comments::latest()->get();
         $this->comment = $com;
-    }    
+    } 
+
+    public function remove($comment_id)
+    {
+        $comment = Comments::find($comment_id);
+
+        // ------deleting from DB-------
+        $comment->delete();
+
+        // --------deleting from collection--------
+        $this->comment = $this->comment->except($comment_id);
+
+        // --------deleting from collection--------
+        // $this->comment = $this->comment->where('id','!=', $comment_id);
+    }
+
+    // --------realtime Validation-------
+    public function updated($field)
+    {
+        $this->validateOnly($field, $this->rules);
+    }
+
 
     public function addComment()
     {
+        
         // ?------returns nothing if comment box is empty---------
-        if($this->newComment == ""){
+/*        if($this->newComment == ""){
            return;
        }
+*/
 
-        // ?---------user post comments in a format that shows the latest post on top------- 
+       // -----------Validation-----------
+       $this->validate($this->rules);
+
+       // --------New comment from user -----------
+       $createdComment = Comments::create(['body'=>$this->newComment,'user_id'=>1]);
+
+       // -------Adding new comment into comments DB-------
+       $this->comment->prepend($createdComment);
+
+/*        // ?---------user post comments in a format that shows the latest post on top------- 
         array_unshift($this->comment,[
             'body' => $this->newComment,
             'created_at' => Carbon::now()->diffForHumans(),
             'user' => 'Silva'
         ]);
 
-        // ?--------clears comment box after user post--------
+*/        
+    
+    // ?--------clears comment box after user post--------
         $this->newComment = "";
     }
 
